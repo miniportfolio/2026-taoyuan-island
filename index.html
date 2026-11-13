@@ -262,6 +262,7 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--peach);outline-offs
 <script src="dialogue.js"></script>
 <script src="confetti3d.js"></script>
 <script src="wander.js"></script>
+<script src="static-merge.js"></script>
 <script src="patrol.js"></script>
 <script src="pickups3d.js"></script>
 <script src="scene3d.js"></script>
@@ -723,7 +724,7 @@ function init3D(){LoadGuard.createRenderer({create:()=>new THREE.WebGLRenderer({
 function run3D(){(function(){
 const RM=matchMedia("(prefers-reduced-motion: reduce)").matches;
 const stage=$("stage");
-renderer.setPixelRatio(Math.min(2,devicePixelRatio||1));
+renderer.setPixelRatio(Math.min(1.5,devicePixelRatio||1));
 renderer.setSize(innerWidth,innerHeight);
 renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
 stage.appendChild(renderer.domElement);
@@ -1611,6 +1612,10 @@ function step(){
   requestAnimationFrame(step);
 }
 addEventListener("resize",()=>{renderer.setSize(innerWidth,innerHeight);cam.aspect=innerWidth/innerHeight;cam.updateProjectionMatrix()});
+/* ---- 效能：合併不會動的物件（static-merge.js）---- */
+try{const SM=StaticMerge.run({THREE,scene,sample:t=>ANIM.forEach(f=>f(t,1/60)),span:24,samples:61,cell:60,
+  exclude:[player,shadowDisc,boss,egg,water,...clouds,...birds.map(b=>b.g),...npcObjs.flatMap(n=>[n.obj,n.mk]),...WALK.map(w=>w.h),...TRO.flatMap(o=>[o.g,o.glow]),...GLOWS,...CONF]});
+  window.__staticMerge=SM}catch(e){console.warn("StaticMerge skipped",e)}
 step();
 })()}
 </script>
