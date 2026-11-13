@@ -13,7 +13,7 @@
  *     exclude: [player, boss, ...],                 // 由程式控制、模擬不到的動態物件（連同子物件都不合併）
  *     span: 24, samples: 61,                        // 模擬幾秒、取樣幾次
  *     cell: 60                                      // 合併區塊大小（世界座標單位），太大會失去視錐裁切
- *   }) → { before, after, groups, skipped }
+ *   }) → { meshes, merged, groups, skipped, moving, singles, movingObjects, anchored }（統計數字，除錯用）
  */
 (function (global) {
   "use strict";
