@@ -165,6 +165,10 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--peach);outline-offs
 .gzimg img{display:block;width:100%;height:auto}
 .gzimg span{display:block;padding:6px 10px;font-size:12.5px;background:var(--paper)}
 .btn.gzopen{margin-top:4px}
+.gzl{margin:4px 0 2px;font-size:.9em;line-height:1.6;color:var(--ink);background:var(--paper);border-left:3px solid var(--teal);border-radius:6px;padding:4px 8px}
+.gzt{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.04em;color:#fff;background:var(--teal);border-radius:4px;padding:1px 6px;margin-right:6px;vertical-align:1px}
+.pc ul li.gzonly{list-style:none;margin-left:-20px}
+.gzlg{margin-top:8px}
 .gzbtn{display:flex;flex-direction:column;align-items:flex-start;width:100%;text-align:left;font:inherit;border:1px solid var(--teal);border-radius:12px;background:var(--paper);color:var(--ink);padding:9px 12px;margin:0 0 10px;cursor:pointer}
 .gzbtn span{font-weight:700;color:var(--teal)}
 .gzbtn small{font-size:12px;color:var(--muted)}
@@ -454,28 +458,29 @@ const ISL=[
    isl＝對應的政策島 id；空陣列＝島上尚未收錄。 */
 const GAZ={head:"桃園子弟黃世杰，打造活力、進步、幸福心桃園！",img:"gazette-huang.jpg",cats:[
  ["好發展",[
-  {t:"交通新治理 路網大翻新",b:"捷運軌道建設加速，進度要透明。強化銜接路網，未來市府轉型升格為公共運輸總規劃師，讓公車不脫班，提升大眾運輸使用率。",isl:["traffic"]},
-  {t:"科技執法不濫用 推動人本交通",b:"",isl:["traffic"]},
-  {t:"產業再升級",b:"AI導入傳產升級，改善產業園區環境。加速龍科三期，帶動在地產業鏈大進化。打造航太科技產業，發展無人機具驗證中心。串聯桃竹苗科技廊帶，吸引國際高階科技服務業。",isl:["industry"]},
-  {t:"擦亮桃園觀光品牌",b:"建立品牌永續機制。北橫發展新思維。觀光基礎建設優化，締造國門觀光新風貌。",isl:["tour"]},
-  {t:"農業三支箭",b:"建構未來冷鏈，提高產銷競爭力。創新智慧農業，精緻農業升級，提升桃園農業軟硬實力。",isl:["industry"]}]],
+  {t:"交通新治理 路網大翻新",b:"捷運軌道建設加速，進度要透明。強化銜接路網，未來市府轉型升格為公共運輸總規劃師，讓公車不脫班，提升大眾運輸使用率。",m:[["捷運軌道建設加速，進度要透明。", "traffic", 4], ["強化銜接路網，未來市府轉型升格為公共運輸總規劃師，讓公車不脫班，提升大眾運輸使用率。", "traffic", 0]],isl:["traffic"]},
+  {t:"科技執法不濫用 推動人本交通",b:"",m:[["科技執法不濫用 推動人本交通", "traffic", 7]],isl:["traffic"]},
+  {t:"產業再升級",b:"AI導入傳產升級，改善產業園區環境。加速龍科三期，帶動在地產業鏈大進化。打造航太科技產業，發展無人機具驗證中心。串聯桃竹苗科技廊帶，吸引國際高階科技服務業。",m:[["AI導入傳產升級，改善產業園區環境。", "industry", 5], ["加速龍科三期，帶動在地產業鏈大進化。", "industry", 0], ["打造航太科技產業，發展無人機具驗證中心。", "industry", 3], ["串聯桃竹苗科技廊帶，吸引國際高階科技服務業。", "industry", -1]],isl:["industry"]},
+  {t:"擦亮桃園觀光品牌",b:"建立品牌永續機制。北橫發展新思維。觀光基礎建設優化，締造國門觀光新風貌。",m:[["北橫發展新思維。", "tour", 1], ["建立品牌永續機制。", "tour", -1], ["觀光基礎建設優化，締造國門觀光新風貌。", "tour", -1]],isl:["tour"]},
+  {t:"農業三支箭",b:"建構未來冷鏈，提高產銷競爭力。創新智慧農業，精緻農業升級，提升桃園農業軟硬實力。",m:[["建構未來冷鏈，提高產銷競爭力。創新智慧農業，精緻農業升級，提升桃園農業軟硬實力。", "industry", -1]],isl:["industry"]}]],
  ["好照顧",[
-  {t:"健康桃園 特色醫療 醫護安居",b:"針對各區需求，精準打造癌症、兒童、高齡等特色醫療院所。持續為桃園爭取第二座醫學中心！推動桃園專屬醫護安居方案。",isl:["medic"]},
-  {t:"你的育兒神隊友 市府陪你一起養",b:"建立透明托育地圖。擴大公托量能。成立企業托育桃園隊。建置「高風險預警機制」。全面補助0-12歲孩童健保費。補助第二胎托育。補助6歲以下兒童腸病毒疫苗。",isl:["child","senior"]},
-  {t:"敬老愛心卡升級 全面補助65歲以上健保費",b:"每月點數提升至1200點。每月不歸零，累積到年底。擴大使用範圍，超商、超市、健保藥局、特約醫療院所、農漁會產銷中心皆可使用。",isl:["senior"]},
-  {t:"培養學子未來力 做教師的後盾",b:"推動AI素養思辨教育。圖書館升級。完善通學路。營養午餐吃更好。減輕教師行政負擔，充實支持人力。擴充特教量能。建立校園爭議調處機制，降低校園對立。",isl:["edu"]}]],
+  {t:"健康桃園 特色醫療 醫護安居",b:"針對各區需求，精準打造癌症、兒童、高齡等特色醫療院所。持續為桃園爭取第二座醫學中心！推動桃園專屬醫護安居方案。",m:[["持續為桃園爭取第二座醫學中心！", "medic", 2], ["針對各區需求，精準打造癌症、兒童、高齡等特色醫療院所。", "medic", 3], ["推動桃園專屬醫護安居方案。", "medic", 4]],isl:["medic"]},
+  {t:"你的育兒神隊友 市府陪你一起養",b:"建立透明托育地圖。擴大公托量能。成立企業托育桃園隊。建置「高風險預警機制」。全面補助0-12歲孩童健保費。補助第二胎托育。補助6歲以下兒童腸病毒疫苗。",m:[["擴大公托量能。", "child", 0], ["建立透明托育地圖。", "child", 2], ["補助6歲以下兒童腸病毒疫苗。", "child", 3], ["補助第二胎托育。", "child", 4], ["成立企業托育桃園隊。", "child", 5], ["建置「高風險預警機制」。", "child", 7], ["全面補助0-12歲孩童健保費。", "senior", 3]],isl:["child", "senior"]},
+  {t:"敬老愛心卡升級 全面補助65歲以上健保費",b:"每月點數提升至1200點。每月不歸零，累積到年底。擴大使用範圍，超商、超市、健保藥局、特約醫療院所、農漁會產銷中心皆可使用。",m:[["每月點數提升至1200點。", "senior", 0], ["每月不歸零，累積到年底。", "senior", 1], ["擴大使用範圍，超商、超市、健保藥局、特約醫療院所、農漁會產銷中心皆可使用。", "senior", 2], ["全面補助65歲以上健保費", "senior", 3]],isl:["senior"]},
+  {t:"培養學子未來力 做教師的後盾",b:"推動AI素養思辨教育。圖書館升級。完善通學路。營養午餐吃更好。減輕教師行政負擔，充實支持人力。擴充特教量能。建立校園爭議調處機制，降低校園對立。",m:[["推動AI素養思辨教育。圖書館升級。", "edu", 0], ["減輕教師行政負擔，充實支持人力。", "edu", 1], ["完善通學路。", "edu", 2], ["營養午餐吃更好。", "edu", -1], ["擴充特教量能。", "edu", -1], ["建立校園爭議調處機制，降低校園對立。", "edu", -1]],isl:["edu"]}]],
  ["好生活",[
-  {t:"文化造浪 桃園新動能",b:"發展演唱會經濟，推動各級展演空間。升級桃園文學季，完善城市閱讀環境。成立桃園電影委員會，帶動地方曝光與文化觀光。",isl:["tour"]},
-  {t:"友善寵物心城市",b:"寵愛毛小孩，營造人寵共融特色公園、建置友善寵物透明地圖、寵物健康預防管理。",isl:["pet"]},
-  {t:"十分鐘遊戲圈 桃園更好玩",b:"營造十分鐘遊戲圈。規劃青少年戶外遊憩空間。打造涼感公園。推動校園遊戲空間升級。",isl:["child"]},
-  {t:"打造全民運動心生活",b:"推動全民運動。設置適應運動中心。強化選手培訓，健全照護網。建立國際運動賽事品牌。",isl:["sport"]},
-  {t:"客家新方針 行向新時代",b:"擴大客語生活應用。以文化驅動產業，活絡客庄經濟。支持在地團隊，厚植藝文能量。",isl:["ethnic"]},
-  {t:"原力出擊 打造原民文化新都心",b:"強化KIRI文創園區功能。支持原住民人才培育。傳承歲時祭儀，尊重部落主體性。",isl:["ethnic"]},
-  {t:"新心共融 串聯國門",b:"鼓勵新住民、新二代發展。建構多語環境。整合跨局處服務。讓多元文化被看見。",isl:["ethnic"]},
-  {t:"未達市民共識 不推「垃圾費隨袋徵收」",b:"",isl:["env"]}]]]};
+  {t:"文化造浪 桃園新動能",b:"發展演唱會經濟，推動各級展演空間。升級桃園文學季，完善城市閱讀環境。成立桃園電影委員會，帶動地方曝光與文化觀光。",m:[["發展演唱會經濟，推動各級展演空間。", "tour", 4], ["成立桃園電影委員會，帶動地方曝光與文化觀光。", "tour", 5], ["升級桃園文學季，完善城市閱讀環境。", "tour", -1]],isl:["tour"]},
+  {t:"友善寵物心城市",b:"寵愛毛小孩，營造人寵共融特色公園、建置友善寵物透明地圖、寵物健康預防管理。",m:[["營造人寵共融特色公園", "pet", 0], ["建置友善寵物透明地圖", "pet", 1], ["寵物健康預防管理", "pet", 2]],isl:["pet"]},
+  {t:"十分鐘遊戲圈 桃園更好玩",b:"營造十分鐘遊戲圈。規劃青少年戶外遊憩空間。打造涼感公園。推動校園遊戲空間升級。",m:[["營造十分鐘遊戲圈。規劃青少年戶外遊憩空間。打造涼感公園。推動校園遊戲空間升級。", "child", 6]],isl:["child"]},
+  {t:"打造全民運動心生活",b:"推動全民運動。設置適應運動中心。強化選手培訓，健全照護網。建立國際運動賽事品牌。",m:[["強化選手培訓，健全照護網。", "sport", 1], ["設置適應運動中心。", "sport", 3], ["建立國際運動賽事品牌。", "sport", 4], ["推動全民運動。", "sport", -1]],isl:["sport"]},
+  {t:"客家新方針 行向新時代",b:"擴大客語生活應用。以文化驅動產業，活絡客庄經濟。支持在地團隊，厚植藝文能量。",m:[["擴大客語生活應用。", "ethnic", 0], ["以文化驅動產業，活絡客庄經濟。支持在地團隊，厚植藝文能量。", "ethnic", -1]],isl:["ethnic"]},
+  {t:"原力出擊 打造原民文化新都心",b:"強化KIRI文創園區功能。支持原住民人才培育。傳承歲時祭儀，尊重部落主體性。",m:[["傳承歲時祭儀，尊重部落主體性。", "ethnic", 3], ["強化KIRI文創園區功能。支持原住民人才培育。", "ethnic", 5]],isl:["ethnic"]},
+  {t:"新心共融 串聯國門",b:"鼓勵新住民、新二代發展。建構多語環境。整合跨局處服務。讓多元文化被看見。",m:[["鼓勵新住民、新二代發展。", "ethnic", 6], ["建構多語環境。", "ethnic", 8], ["整合跨局處服務。", "ethnic", 9], ["讓多元文化被看見。", "ethnic", -1]],isl:["ethnic"]},
+  {t:"未達市民共識 不推「垃圾費隨袋徵收」",b:"",m:[["未達市民共識 不推「垃圾費隨袋徵收」", "env", 0]],isl:["env"]}]]]};
 const GAZ_ALL=GAZ.cats.flatMap(([c,a])=>a.map(g=>({...g,cat:c})));
 const gazOf=id=>GAZ_ALL.filter(g=>g.isl.includes(id));
-const gazItem=g=>`<div class="gz"><span class="gzc">${g.cat}</span><b>${g.t}</b>${g.b?`<p>${g.b}</p>`:""}</div>`;
+const gazPts=id=>{const at={},add=[];GAZ_ALL.forEach(g=>g.m.forEach(([x,i,k])=>{if(i!==id)return;(k<0?add:(at[k]=at[k]||[])).push(x)}));return{at,add}};
+const gzTag=x=>`<div class="gzl"><span class="gzt">選舉公報</span>${x}</div>`;
 const NPCS=[
  {id:"kai",isl:"traffic",slot:0,name:"阿凱",role:"中原大學大三，住平鎮、每天搭公車到中壢上課",color:"#3f8fd2",shirt:0x3f8fd2,
   lines:["我住平鎮，每天搭公車到中壢上課。最怕等了半天，車子直接過站，或是 App 顯示快到了，結果根本沒來。","黃世杰說要讓市府當公共運輸的「總運籌者」，要求車輛準點不脫班，公車動態要透明。","路網會分成幹線、生活圈、末端接駁三級，還要用 AI 大數據跟數位雙生來調度班次。"]},
@@ -588,10 +593,9 @@ function openCard(isl,hl=-1){if(!st.isl[isl.id]){st.isl[isl.id]=1;setTimeout(sta
   open(`<article class="pc"><div class="eyebrow ">${tagOf(isl)} · ${isl.name}</div><h2>${c.t}</h2><p class="sum">${c.sum}</p>
    ${c.nums?`<div class="nums">${c.nums.map(n=>`<div class="num"><b>${n[0]}</b><span>${n[1]}</span></div>`).join("")}</div>`:""}
    <h3>具體目標（島上的編號物件）</h3><div class="hexes">${isl.subs.map((s,i)=>`<div class="hx  ${i===hl?'hl':''}">${"①②③④⑤⑥"[i]} ${s[0]}<small>${s[1]}</small></div>`).join("")}</div>
-   <h3>政見內容</h3><ul>${c.pts.map(p=>`<li>${p}</li>`).join("")}</ul>
+   <h3>政見內容</h3>${(G=>`<ul>${c.pts.map((p,k)=>`<li>${p}${(G.at[k]||[]).map(gzTag).join("")}</li>`).join("")}${G.add.map(x=>`<li class="gzonly">${gzTag(x)}</li>`).join("")}</ul>${G.add.length+Object.keys(G.at).length?`<p class="fine gzlg"><span class="gzt">選舉公報</span>標示的文字，逐字摘自桃園市選舉委員會選舉公報上的黃世杰政見欄。</p>`:`<p class="fine gzlg">選舉公報的政見欄沒有列入這座島的政見；以上內容來自競選期間的報導與文宣。</p>`}`)(gazPts(isl.id))}
    ${c.q?`<blockquote class="quote">「${c.q[0]}」<cite>黃世杰，${REF.get(c.q[1]).date}，見${REF.get(c.q[1]).outlet}</cite></blockquote>`:""}
    ${c.note?`<div class="note">${c.note}</div>`:""}
-   <h3>選舉公報怎麼寫</h3>${(g=>g.length?g.map(gazItem).join(""):`<div class="gz none">選舉公報的政見欄沒有列入這座島的政見。上面的內容來自競選期間的報導與文宣。</div>`)(gazOf(isl.id))}
    <button class="btn gzopen" type="button">看選舉公報完整對照</button>
    <h3>出處</h3>${srcList(gazOf(isl.id).length?[...c.src,"gaz"]:c.src)}
    <p class="fine">依公開報導與競選公開文宣整理；未加引號者為對政見的轉述。標示「競選方」的數字由候選人陣營引述，本頁未另行查證。</p>
@@ -606,10 +610,10 @@ function openGaz(){
   const noIsl=GAZ_ALL.filter(g=>!g.isl.length),noGaz=ISL.filter(i=>!gazOf(i.id).length);
   open(`<article class="pc"><div class="eyebrow">選舉公報對照</div><h2>${GAZ.head}</h2>
    <p class="sum">這是黃世杰登記在桃園市選舉委員會<b>選舉公報</b>上的政見，共 ${GAZ_ALL.length} 項，文字逐字照錄。公報是候選人正式提交、印給每一戶的版本；下面標出每一項對應政策島的哪一座。</p>
-   <a class="gzimg" href="${GAZ.img}" target="_blank" rel="noopener"><img src="${GAZ.img}" alt="選舉公報黃世杰政見欄原圖" loading="lazy"><span>看公報原圖 ↗</span></a>
    ${GAZ.cats.map(([c,a])=>`<h3>${c}</h3>${a.map(g=>`<div class="gz"><b>${g.t}</b>${g.b?`<p>${g.b}</p>`:""}<div class="gzis">${chips(g)}</div></div>`).join("")}`).join("")}
    <h3>兩邊沒對上的部分</h3>
    <div class="note"><b>公報有寫、島上還沒收錄</b>　${noIsl.map(g=>g.t).join("、")||"無（全部都有對應的島）"}<br><br><b>島上有、公報政見欄沒列入</b>　${noGaz.map(i=>`第 ${i.n} 島${i.name}`).join("、")||"無"}<br><br>公報政見欄篇幅有限，沒列入不等於候選人放棄這些主張；這些島的內容來自競選期間的報導與文宣，各島卡片裡都有出處。</div>
+   <h3>公報原圖</h3><a class="gzimg" href="${GAZ.img}" target="_blank" rel="noopener"><img src="${GAZ.img}" alt="選舉公報黃世杰政見欄原圖" loading="lazy"><span>開啟原圖 ↗</span></a>
    <h3>出處</h3>${srcList(["gaz"])}
    <div class="row"><button class="btn" id="ix">政見索引</button></div></article>`);
   sheet.querySelectorAll("[data-isl]").forEach(b=>b.onclick=()=>{const i=islOf(b.dataset.isl);closeSheet();travelIsl(i,true)});
