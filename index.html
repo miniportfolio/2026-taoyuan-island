@@ -168,7 +168,9 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--peach);outline-offs
 .gzl{margin:4px 0 2px;font-size:.9em;line-height:1.6;color:var(--ink);background:var(--paper);border-left:3px solid var(--teal);border-radius:6px;padding:4px 8px}
 .gzt{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.04em;color:#fff;background:var(--teal);border-radius:4px;padding:1px 6px;margin-right:6px;vertical-align:1px}
 .pc ul li.gzonly{list-style:none;margin-left:-20px}
-.gzlg{margin-top:8px}
+.gzlg{margin-top:10px}
+.gzlg p{margin:0 0 4px}
+.cmt{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.04em;color:var(--gold);background:var(--gold-soft);border:1px solid currentColor;border-radius:4px;padding:0 5px;margin-right:6px;vertical-align:1px;white-space:nowrap}
 .gzbtn{display:flex;flex-direction:column;align-items:flex-start;width:100%;text-align:left;font:inherit;border:1px solid var(--teal);border-radius:12px;background:var(--paper);color:var(--ink);padding:9px 12px;margin:0 0 10px;cursor:pointer}
 .gzbtn span{font-weight:700;color:var(--teal)}
 .gzbtn small{font-size:12px;color:var(--muted)}
@@ -593,7 +595,7 @@ function openCard(isl,hl=-1){if(!st.isl[isl.id]){st.isl[isl.id]=1;setTimeout(sta
   open(`<article class="pc"><div class="eyebrow ">${tagOf(isl)} · ${isl.name}</div><h2>${c.t}</h2><p class="sum">${c.sum}</p>
    ${c.nums?`<div class="nums">${c.nums.map(n=>`<div class="num"><b>${n[0]}</b><span>${n[1]}</span></div>`).join("")}</div>`:""}
    <h3>具體目標（島上的編號物件）</h3><div class="hexes">${isl.subs.map((s,i)=>`<div class="hx  ${i===hl?'hl':''}">${"①②③④⑤⑥"[i]} ${s[0]}<small>${s[1]}</small></div>`).join("")}</div>
-   <h3>政見內容</h3>${(G=>`<ul>${c.pts.map((p,k)=>`<li>${p}${(G.at[k]||[]).map(gzTag).join("")}</li>`).join("")}${G.add.map(x=>`<li class="gzonly">${gzTag(x)}</li>`).join("")}</ul>${G.add.length+Object.keys(G.at).length?`<p class="fine gzlg"><span class="gzt">選舉公報</span>標示的文字，逐字摘自桃園市選舉委員會選舉公報上的黃世杰政見欄。</p>`:`<p class="fine gzlg">選舉公報的政見欄沒有列入這座島的政見；以上內容來自競選期間的報導與文宣。</p>`}`)(gazPts(isl.id))}
+   <h3>政見內容</h3>${(G=>`<ul>${c.pts.map((p,k)=>`<li>${G.at[k]?"":`<span class="cmt">競選期間說法</span>`}${p}${(G.at[k]||[]).map(gzTag).join("")}</li>`).join("")}${G.add.map(x=>`<li class="gzonly">${gzTag(x)}</li>`).join("")}</ul><div class="fine gzlg"><p><span class="gzt">選舉公報</span>逐字摘自桃園市選舉委員會選舉公報上的黃世杰政見欄，是候選人正式提交的版本。</p><p><span class="cmt">競選期間說法</span>選舉公報沒有寫到，出自競選期間的報導、政見會與文宣，出處列在下方。</p>${G.add.length+Object.keys(G.at).length?"":`<p>這座島的政見都沒有列入選舉公報。</p>`}</div>`)(gazPts(isl.id))}
    ${c.q?`<blockquote class="quote">「${c.q[0]}」<cite>黃世杰，${REF.get(c.q[1]).date}，見${REF.get(c.q[1]).outlet}</cite></blockquote>`:""}
    ${c.note?`<div class="note">${c.note}</div>`:""}
    <button class="btn gzopen" type="button">看選舉公報完整對照</button>
